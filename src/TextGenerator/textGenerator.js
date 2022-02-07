@@ -1,3 +1,4 @@
+import rules from "./rules"
 
 // todo: upload as json?
 const config = {
@@ -24,19 +25,6 @@ const config = {
   }
 }
 
-// dict that contains all types as key, and replacer function as value
-const dict = {
-  "singleCharacter": function(target, character) {
-    return target.replace("*", character)
-  },
-  "indexBasedArray": function(target, character) {
-    return target[+character]
-  },
-  "space": function(target, character) {
-    return " "
-  }
-}
-
 /**
  * 
  * @param {string} char single character
@@ -58,7 +46,7 @@ function replacer(char) {
   const matched = predicate(char)
   if (matched) {
     const { type, target } = matched.replaceWith
-    return dict[type](target, char)
+    return rules[type](target, char)
   }
   else {
     return char
