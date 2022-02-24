@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "search": "[a-z]",
+      "replaceWith": {
+        "type": "singleCharacter",
+        "target": ":regional_indicator_*:"
+      }
+    },
+    {
+      "search": "[0-9]",
+      "replaceWith": {
+        "type": "indexBasedArray",
+        "target": [":zero:", ":one:", ":two:", ":three:", ":four:", ":five:", ":six:", ":seven:", ":eight:", ":nine:"]
+      }
+    },
+    {
+      "search": "#",
+      "replaceWith": {
+        "type": "target",
+        "target": ":hash:"
+      }
+    },
+    {
+      "search": "[[:space:]]",
+      "replaceWith": {
+        "type": "target",
+        "target": " "
+      }
+    }
+  ]
+}
