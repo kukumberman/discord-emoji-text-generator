@@ -1,29 +1,8 @@
 import rules from "./rules"
 
-// todo: upload as json?
-const config = {
-  letter: {
-    search: "[a-zA-Z]",
-    replaceWith: {
-      type: "singleCharacter",
-      target: ":regional_indicator_*:"
-    }
-  },
-  number: {
-    search: "[0-9]",
-    replaceWith: {
-      type: "indexBasedArray",
-      target: [":zero:", ":one:", ":two:", ":three:", ":four:", ":five:", ":six:", ":seven:", ":eight:", ":nine:"]
-    }
-  },
-  space: {
-    search: "[[:space:]]", // same as "\s"
-    replaceWith: {
-      type: "space",
-      target: " "
-    }
-  }
-}
+import defaultConfig from "../config/default.json"
+
+const config = defaultConfig
 
 /**
  * 
@@ -31,7 +10,7 @@ const config = {
  * @returns 
  */
 function predicate(char) {
-  return Object.values(config).find(entry => {
+  return config.entries.find(entry => {
     const reg = new RegExp(entry.search)
     return reg.test(char)
   })
@@ -60,7 +39,7 @@ function replacer(char) {
  */
 export function createEmojiText(str) {
   const result = Array.from(str)
-    .map(char => char.toLowerCase())
+    // .map(char => char.toLowerCase())
     .map(replacer)
     .join(" ")
   return result
