@@ -27,6 +27,20 @@
         "type": "target",
         "target": " "
       }
+    },
+    {
+      "search": "[A]",
+      "replaceWith": {
+        "type": "target",
+        "target": ":a:"
+      }
+    },
+    {
+      "search": "[O]",
+      "replaceWith": {
+        "type": "target",
+        "target": ":o2:"
+      }
     }
   ]
 }
