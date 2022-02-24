@@ -5,7 +5,7 @@ export default {
   "indexBasedArray": function(target, char) {
     return target[+char]
   },
-  "space": function(target, char) {
-    return " "
+  "target": function(target, char) {
+    return target
   }
 }
