@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="input">
+    <input type="text" v-model="input" @keydown.enter="copyToClipboard">
     <button @click="copyToClipboard" :disabled="output.length === 0">Copy</button>
     <span>{{ clipboardStatus }}</span>
     <p>{{ output }}</p>
@@ -76,14 +76,14 @@ export default {
 
       const text = params.get("text")
       if (text.length > 0) {
-        this.input = text
+        this.input = decodeURIComponent(text)
       }
     },
     replaceQueryText() {
       const { origin, pathname } = window.location
       let url = origin + pathname
       if (this.input.length > 0) {
-        url += "?text=" + this.input
+        url += "?text=" + encodeURIComponent(this.input)
       }
       window.history.replaceState(null, "(although most browsers will ignore this parameter)", url)
     }
