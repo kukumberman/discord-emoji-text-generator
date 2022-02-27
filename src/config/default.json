@@ -41,6 +41,20 @@
         "type": "target",
         "target": ":o2:"
       }
+    },
+    {
+      "search": "[?]",
+      "replaceWith": {
+        "type": "target",
+        "target": ":question:"
+      }
+    },
+    {
+      "search": "[!]",
+      "replaceWith": {
+        "type": "target",
+        "target": ":exclamation:"
+      }
     }
   ]
 }
